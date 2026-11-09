@@ -1,0 +1,2 @@
+{% for text, from_teacher, at in msgs %}<div class="b {{ 'tc' if from_teacher else 'me' }}">{{ text }}<small>{{ at }}</small></div>
+{% else %}<p class="empty">ابدأ المحادثة مع الأستاذ أسامة 💬</p>{% endfor %}

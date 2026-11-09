@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block t %}الأستاذ بلعقاب أسامة{% endblock %}</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/web.css"></head>
+<body class="admin"><main class="page wide"><p><a href="/admin">⬅️ رجوع</a></p><h1>{{ name }}</h1>
+<div class="msgs">{% include "_msgs.html" %}</div>
+<form method="post" action="/admin/reply/{{ uid }}" class="send"><input name="text" maxlength="1000" placeholder="ردّ الأستاذ..." required autofocus><button><i class="fa-solid fa-paper-plane"></i></button></form>
+</main></body></html>

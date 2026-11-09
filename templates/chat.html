@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block h %}تواصل مع الأستاذ{% endblock %}
+{% block body %}<div id="msgs" class="msgs">{% include "_msgs.html" %}</div>
+<form id="f" class="send"><input id="t" maxlength="1000" placeholder="اكتب رسالتك..." autocomplete="off" required><button><i class="fa-solid fa-paper-plane"></i></button></form>
+<script>
+const box = document.getElementById('msgs'), t = document.getElementById('t');
+async function load() { box.innerHTML = await (await fetch('/chat/list')).text(); box.scrollTop = box.scrollHeight; }
+document.getElementById('f').onsubmit = async e => { e.preventDefault(); const b = new FormData(); b.append('text', t.value); t.value = ''; await fetch('/chat/send', {method: 'POST', body: b}); load(); };
+box.scrollTop = box.scrollHeight; setInterval(load, 8000);
+</script>{% endblock %}

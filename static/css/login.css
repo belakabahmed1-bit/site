@@ -1,0 +1,371 @@
+/* ==========================================
+   1. الإعدادات العامة وخلفية الصفحة
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  background-color: #240c66; /* لون بنفسجي متناسق خلف الحاوية */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 420px; /* العرض الطبيعي لشاشة الهاتف */
+  min-height: 100vh;
+  background-color: #240c66;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================
+   2. البانر العلوي (Login Header)
+   ========================================== */
+.login-header {
+  position: relative;
+  padding: 25px 20px 40px 20px;
+  background-color: #240c66;
+  color: #ffffff;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+/* رموز رياضيات خفيفة بالخلفية */
+.math-watermark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.08);
+  word-spacing: 15px;
+  line-height: 2.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* الشكل البنفسجي الفاتح المائل جهة اليسار */
+.bg-shape {
+  position: absolute;
+  top: -40px;
+  left: -50px;
+  width: 220px;
+  height: 380px;
+  background: linear-gradient(135deg, #a672fb 0%, #8344f6 100%);
+  transform: rotate(-18deg);
+  border-radius: 40px;
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  z-index: 3;
+  margin-top: 10px;
+}
+
+/* معلومات الأستاذ واللوجو */
+.teacher-info {
+  flex: 1.2;
+  text-align: right;
+}
+
+.app-logo {
+  width: 75px;
+  height: 75px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #7033ff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.app-logo i {
+  font-size: 26px;
+}
+
+.logo-sigma {
+  font-size: 16px;
+  font-weight: 900;
+  margin-top: -2px;
+}
+
+.title-sub {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+}
+
+.title-main {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.title-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e2d5ff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.title-divider::before, .title-divider::after {
+  content: "";
+  height: 1px;
+  width: 20px;
+  background-color: rgba(226, 213, 255, 0.4);
+}
+
+.badge-year {
+  display: inline-block;
+  background-color: #8c50ff;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 4px 18px;
+  border-radius: 12px;
+}
+
+/* صورة الأستاذ */
+.teacher-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.teacher-image img {
+  max-width: 120%;
+  max-height: 230px;
+  object-fit: contain;
+}
+
+/* ==========================================
+   3. بطاقة نموذج تسجيل الدخول (Login Card)
+   ========================================== */
+.login-card {
+  background-color: #ffffff;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  padding: 30px 25px;
+  flex: 1;
+  margin-top: -20px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #6a2bf4;
+  margin-bottom: 25px;
+}
+
+/* حقول الإدخال */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #faf9fe;
+  border: 1px solid #f0eaff;
+  border-radius: 16px;
+  padding: 0 15px;
+  height: 54px;
+}
+
+.input-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #f2ebff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7033ff;
+  font-size: 14px;
+  margin-left: 12px;
+}
+
+.input-group input {
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.input-group input::placeholder {
+  color: #b0a8c7;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  color: #7033ff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* خيارات تذكرني وكلمة المرور */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 10px 0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #4a4a4a;
+}
+
+.remember-me input {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #7033ff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 10px;
+  background-color: #ffffff;
+  transition: all 0.2s;
+}
+
+.remember-me input:checked + .custom-checkbox {
+  background-color: #7033ff;
+}
+
+.forgot-pass {
+  color: #7033ff;
+  text-decoration: none;
+}
+
+/* زر تسجيل الدخول */
+.submit-btn {
+  background: linear-gradient(135deg, #7033ff 0%, #5b1bf4 100%);
+  color: #ffffff;
+  border: none;
+  height: 52px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(112, 51, 255, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* الفاصل (أو) */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #a098b5;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #eee8fc;
+}
+
+.divider span {
+  padding: 0 12px;
+}
+
+/* زر Google */
+.google-btn {
+  width: 100%;
+  height: 52px;
+  background-color: #ffffff;
+  border: 1px solid #7033ff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #222222;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.google-btn:hover {
+  background-color: #f9f7ff;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* رابط إنشاء حساب */
+.signup-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #777777;
+}
+
+.signup-link a {
+  color: #7033ff;
+  text-decoration: none;
+  font-weight: 800;
+}

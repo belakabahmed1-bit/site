@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block h %}{{ title }}{% endblock %}
+{% block body %}{% set ns = namespace(g=None) %}
+{% for href, t, d, g in rows %}
+  {% if g and g != ns.g %}<h2 class="grp">{{ g }}</h2>{% set ns.g = g %}{% endif %}
+  <a class="lesson-card" href="{{ href }}" {% if ext %}target="_blank"{% endif %}>
+    <div class="lesson-info"><i class="fa-solid fa-chevron-left arrow-icon"></i>
+      <div class="lesson-details"><h3 class="lesson-title">{{ t }}</h3>{% if d %}<p class="lesson-desc">{{ d }}</p>{% endif %}</div></div>
+  </a>
+{% else %}<p class="empty">{{ empty }}</p>{% endfor %}{% endblock %}

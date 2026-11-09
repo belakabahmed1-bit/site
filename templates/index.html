@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الأستاذ بلعقاب أسامة</title>
+  
+  <!-- خط Cairo بأوزان مختلفة -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- مكتبة الأيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- ربط ملف التنسيقات الخارجية -->
+  <link rel="stylesheet" href="/static/css/style.css">
+  <!-- 👈 ربط ملف JavaScript هنا -->
+  <script src="/static/js/main.js" defer></script>
+
+  
+  <link rel="stylesheet" href="/static/css/web.css">
+</head>
+<body>
+
+  <!-- 🎯 البانر العلوي بالكامل (Hero Banner) -->
+  <header class="hero-banner">
+
+    <!-- الشريط العلوي (الأيقونات فقط) -->
+    <div class="top-header">
+      <!-- أيقونة القائمة (List / Menu) -->
+      <button class="icon-btn menu-btn" aria-label="القائمة">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- أيقونة الإشعارات مع العداد (Notification) -->
+      <a href="/chat" class="icon-btn notification-btn" aria-label="الرسائل"><i class="fa-regular fa-bell"></i>{% if unread %}<span class="badge">{{ unread }}</span>{% endif %}</a>
+    </div>
+
+    <!-- محتوى البانر الرئيسي -->
+    <div class="banner-content">
+      
+      <!-- النصوص والشارات على اليمين -->
+      <div class="banner-text">
+        <h2 class="title-sub">الأستاذ</h2>
+        <h1 class="title-main">بلعقاب أسامة</h1>
+        <p class="subtitle">أستاذ الرياضيات</p>
+        
+        <div class="badge-year">BAC 2027</div>
+        
+        <div class="motto">
+          <span>نحو العلامة الكاملة</span>
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+      </div>
+
+      <!-- صورة الأستاذ على اليسار -->
+      <div class="banner-image">
+        <!-- ضع مسار صورتك هنا -->
+        <img src="/static/images/teacher-image.png" alt="الأستاذ بلعقاب أسامة">
+      </div>
+
+    </div>
+    
+  </header>
+
+  <!-- 🎯 شبكة الخدمات والأقسام (Services Grid) -->
+<section class="services-grid">
+  
+  <!-- 1. الدروس -->
+  <a href="/units/lesson" class="service-card">
+    <div class="service-icon">
+      <i class="fa-solid fa-book-open"></i>
+    </div>
+    <h3 class="service-title">الدروس</h3>
+    <p class="service-desc">جميع الدروس</p>
+  </a>
+
+  <!-- 2. التمارين -->
+  <a href="/units/exercise" class="service-card">
+    <div class="service-icon">
+      <i class="fa-solid fa-pen-to-square"></i>
+    </div>
+    <h3 class="service-title">التمارين</h3>
+    <p class="service-desc">تمارين محلولة</p>
+  </a>
+
+  <!-- 3. الفروض -->
+  <a href="#" class="service-card">
+    <div class="service-icon">
+      <i class="fa-solid fa-file-signature"></i>
+    </div>
+    <h3 class="service-title">الفروض</h3>
+    <p class="service-desc">قريباً</p>
+  </a>
+
+  <!-- 4. الاختبارات -->
+  <a href="/bac" class="service-card">
+    <div class="service-icon">
+      <i class="fa-solid fa-trophy"></i>
+    </div>
+    <h3 class="service-title">مواضيع BAC</h3>
+    <p class="service-desc">حوليات الباك</p>
+  </a>
+
+  <!-- 5. النتائج -->
+  <a href="#" class="service-card">
+    <div class="service-icon">
+      <i class="fa-solid fa-chart-line"></i>
+    </div>
+    <h3 class="service-title">النتائج</h3>
+    <p class="service-desc">قريباً</p>
+  </a>
+
+  <!-- 6. تواصل معنا -->
+  <a href="/chat" class="service-card">
+    <div class="service-icon">
+      <i class="fa-solid fa-comments"></i>
+    </div>
+    <h3 class="service-title">تواصل معنا</h3>
+    <p class="service-desc">أسئلة واستفسارات</p>
+  </a>
+
+</section>
+
+
+<!-- 🎯 قسم آخر الدروس -->
+<section class="latest-lessons">
+  
+  <!-- عنوان القسم -->
+  <div class="section-header">
+    <h2 class="section-title">آخر الدروس</h2>
+  </div>
+
+  <!-- قائمة الدروس -->
+  <div class="lessons-list">{% for iid, name, unit in latest %}
+    <a href="/item/{{ iid }}" class="lesson-card">
+      <div class="lesson-info"><i class="fa-solid fa-chevron-left arrow-icon"></i>
+        <div class="lesson-details"><h3 class="lesson-title">{{ name }}</h3><p class="lesson-desc">{{ unit }}</p><span class="lesson-tag">درس</span></div></div>
+      <div class="lesson-media"><div class="thumbnail"><span class="lesson-code">{{ unit }}</span></div>
+        <div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
+    </a>
+    {% else %}<p class="empty">لا توجد دروس منشورة بعد.</p>{% endfor %}
+  </div>
+
+  <!-- زر عرض المزيد -->
+  <a href="/units/lesson" class="more-btn">
+    <i class="fa-solid fa-chevron-left"></i>
+    <span>عرض المزيد</span>
+  </a>
+
+</section>
+
+<!-- 🎯 البانر السفلي كصورة كاملة -->
+<section class="goal-banner-image">
+  <a href="#">
+    <img src="/static/images/goal-banner.png" alt="هدفنا واحد - نجاحك في البكالوريا">
+  </a>
+</section>
+
+  <!-- 🎯 شريط التنقل السفلي -->
+  {% include "_nav.html" %}
+
+  <!-- 🎯 القائمة الجانبية المنبثقة (Overlay Menu) -->
+<div class="side-menu-overlay" id="sideMenu">
+  <div class="side-menu-content">
+    
+    <!-- زر الإغلاق X -->
+    <button class="close-menu-btn" id="closeMenuBtn">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- عناصر القائمة -->
+    <nav class="menu-items">
+      <a href="/" class="menu-item">الرئيسية</a><a href="/units/lesson" class="menu-item">الدروس</a>
+      <a href="/units/exercise" class="menu-item">التمارين</a><a href="/bac" class="menu-item">مواضيع BAC</a>
+      <a href="/chat" class="menu-item">تواصل مع الأستاذ</a></nav>
+
+    <!-- تحديد الدولة / اللغة -->
+    <div class="country-selector">
+      <i class="fa-solid fa-caret-down arrow-down"></i>
+      <img src="https://flagcdn.com/w40/dz.png" alt="الجزائر" class="flag-icon">
+    </div>
+
+    <!-- زر تسجيل الخروج -->
+    <div class="logout-wrapper">
+      <a href="/logout" class="logout-btn">تسجيل الخروج</a>
+    </div>
+
+    <!-- زر الدعم الشات العائم (Floating Chat Icon) -->
+    <a href="/chat" class="support-chat-btn">
+      <i class="fa-solid fa-comment-dots"></i>
+    </a>
+
+  </div>
+</div>
+</body>
+</html>

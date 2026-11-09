@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء حساب جديد - الأستاذ بلعقاب أسامة</title>
+
+  <!-- خط Cairo من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <!-- مكتبة الأيقونات FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/static/css/register.css">
+  <script src="/static/js/register.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="/static/css/web.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- 🎯 البانر العلوي -->
+    <header class="register-header">
+      <div class="math-watermark">f(x)  ln(x)  e^x  ∫dx  π  a²+ax+b  √x  ∑</div>
+      <div class="bg-shape"></div>
+
+      <div class="header-content">
+        <div class="teacher-info">
+          <div class="app-logo">
+            <i class="fa-solid fa-user-plus"></i>
+          </div>
+          <span class="title-sub">مرحباً بك في منصة</span>
+          <h1 class="title-main">الأستاذ بلعقاب أسامة</h1>
+          <div class="badge-year">BAC 2027</div>
+        </div>
+
+        <div class="teacher-image">
+          <img src="/static/images/teacher-image.png" alt="الأستاذ بلعقاب أسامة">
+        </div>
+      </div>
+    </header>
+
+    <!-- 🎯 بطاقة نموذج إنشاء الحساب -->
+    <main class="register-card">
+      <h2 class="form-title">إنشاء حساب جديد</h2>
+
+      <form action="#" class="register-form">
+
+        <!-- الاسم -->
+        <div class="input-group">
+          <div class="input-icon"><i class="fa-regular fa-user"></i></div>
+          <input type="text" placeholder="الاسم" required>
+        </div>
+
+        <!-- اللقب -->
+        <div class="input-group">
+          <div class="input-icon"><i class="fa-regular fa-id-card"></i></div>
+          <input type="text" placeholder="اللقب" required>
+        </div>
+
+        <!-- رقم الهاتف -->
+        <div class="input-group">
+          <div class="input-icon"><i class="fa-solid fa-phone"></i></div>
+          <input type="tel" placeholder="رقم الهاتف" required dir="rtl">
+        </div>
+
+        <!-- 🆕 حقل الشعبة -->
+        <div class="input-group">
+          <div class="input-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <select id="branchSelect" required>
+            <option value="" disabled selected>اختر الشعبة الدراسية...</option>
+            <option value="exp">علوم تجريبية</option>
+            <option value="math">رياضيات</option>
+            <option value="tm">تقني رياضي</option>
+            <option value="ge">تسيير واقتصاد</option>
+            <!-- <option value="lp">آداب وفلسفة</option>
+            <option value="lang">لغات أجنبية</option> -->
+          </select>
+        </div>
+
+        <!-- السؤال التفاعلي: هل تدرس في المدرسة؟ -->
+        <div class="question-box">
+          <label class="question-label">هل تدرس في عندي؟</label>
+          <div class="radio-options">
+            <label class="radio-card">
+              <input type="radio" name="studies_here" value="yes" id="studyYes">
+              <span class="radio-btn">نعم</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="studies_here" value="no" id="studyNo">
+              <span class="radio-btn">لا</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- خيار اختر اسم المدرسة (يظهر عند الضغط على نعم) -->
+        <div class="input-group conditional-field" id="schoolSelectGroup">
+          <div class="input-icon"><i class="fa-solid fa-school"></i></div>
+          <select id="schoolSelect">
+            <option value="" disabled selected>اختر اسم المدرسة أو التعليم عن بعد...</option>
+            <option value="school1">مدرسة القمة رغاية</option>
+            <option value="school2">مدرسة اليمن سكول</option>
+            <option value="school3">مدرسة القمة باب زوار</option>
+            <option value="school4"> التعليم عن بعد</option>
+          </select>
+        </div>
+
+        <!-- رسالة التحذير (تظهر عند الضغط على لا) -->
+        <div class="warning-alert conditional-field" id="warningAlert">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>حذاري! لن تستفيد من كل مزايا المنصة الحصرية للتلاميذ المسجلين في المدرسة.</span>
+        </div>
+
+        <!-- زر إنشاء الحساب -->
+        <button type="submit" class="submit-btn">
+          <span>إنشاء الحساب</span>
+          <i class="fa-solid fa-user-check"></i>
+        </button>
+
+      </form>
+
+      <div class="login-link">
+        لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- 🎯 النافذة المنبثقة: احفظ معلومات الدخول -->
+<div class="save-info-modal" id="saveInfoModal">
+  <div class="modal-content">
+    
+    <!-- زر الإغلاق X -->
+    <button class="modal-close-btn" id="closeModalBtn">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <h2 class="modal-title">احفظ معلومات الدخول</h2>
+
+    <!-- كارت ملخص البيانات -->
+    <div class="info-card">
+      <div class="info-row">
+        <span class="info-label">الاسم واللقب</span>
+        <span class="info-value" id="summaryFullName">---</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">رقم الهاتف</span>
+        <span class="info-value" id="summaryPhone">---</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">الشعبة</span>
+        <span class="info-value" id="summaryBranch">---</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">المدرسة / الحالة</span>
+        <span class="info-value" id="summarySchool">---</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">كلمة المرور</span>
+        <span class="info-value highlight" id="summaryPassword">---</span>
+      </div>
+    </div>
+
+    <!-- نص التنبيه -->
+    <p class="modal-instruction">
+      يرجى أخذ لقطة شاشة لمعلومات الدخول وإرسالها لتأكيد التسجيل، سيتم تحويلك إلى صفحة البدء.
+    </p>
+
+    <!-- زر التقط صورة و أرسل عبر تلغرام -->
+    <button class="telegram-action-btn" id="captureAndSendBtn">
+      <i class="fa-solid fa-camera"></i>
+      <span>التقط صورة للشركة وأكمل التسجيل عبر تلغرام</span>
+    </button>
+
+  </div>
+</div>
+</body>
+</html>

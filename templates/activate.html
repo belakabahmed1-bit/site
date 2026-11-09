@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - الأستاذ بلعقاب أسامة</title>
+  
+  <!-- خط Cairo من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- مكتبة الأيقونات FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="/static/css/login.css">
+  <link rel="stylesheet" href="/static/css/web.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- 🎯 البانر العلوي -->
+    <header class="login-header">
+      
+      <!-- عناصر الرياضيات والمؤثرات في الخلفية -->
+      <div class="math-watermark">f(x)  ln(x)  e^x  ∫dx  π  a²+ax+b  √x  ∑</div>
+      <div class="bg-shape"></div>
+
+      <div class="header-content">
+        
+        <!-- تفاصيل الأستاذ واللوجو (جهة اليمين) -->
+        <div class="teacher-info">
+          <!-- شعار التطبيق الدائري -->
+          <div class="app-logo">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span class="logo-sigma">∑</span>
+          </div>
+
+          <span class="title-sub">الأستاذ</span>
+          <h1 class="title-main">بلعقاب أسامة</h1>
+          
+          <div class="title-divider">
+            <span>أستاذ الرياضيات</span>
+          </div>
+
+          <div class="badge-year">BAC 2027</div>
+        </div>
+
+        <!-- صورة الأستاذ (جهة اليسار) -->
+        <div class="teacher-image">
+          <img src="/static/images/teacher-image.png" alt="الأستاذ بلعقاب أسامة">
+        </div>
+
+      </div>
+    </header>
+
+    <!-- 🎯 بطاقة نموذج تسجيل الدخول -->
+    <main class="login-card">
+      <h2 class="form-title">تفعيل الحساب</h2>{% if err %}<div class="form-error">{{ err }}</div>{% endif %}
+      <p class="hint">أدخل كود التفعيل الذي أعطاك إياه الأستاذ بلعقاب أسامة 🔐</p>
+      <form method="post" class="login-form">
+        <div class="input-group"><div class="input-icon"><i class="fa-solid fa-key"></i></div>
+          <input type="text" name="code" placeholder="كود التفعيل" dir="ltr" autocomplete="off" required></div>
+        <button type="submit" class="submit-btn"><span>تفعيل</span><i class="fa-solid fa-circle-check"></i></button>
+      </form>
+      <div class="signup-link"><a href="/logout">تسجيل الخروج</a></div>
+    </main>
+
+  </div>
+
+</body>
+</html>

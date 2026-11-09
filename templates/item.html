@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block h %}{{ r[0] }}{% endblock %}
+{% block body %}<p class="crumb">{{ r[3] }}</p>
+{% for kind, fid in media %}
+  {% if kind == 'photo' %}<img class="media-img" src="/file/{{ fid }}" loading="lazy" alt="{{ r[0] }}">
+  {% else %}<a class="more-btn" href="/file/{{ fid }}" target="_blank"><i class="fa-solid fa-file-pdf"></i><span>فتح الملف {{ loop.index }}</span></a>{% endif %}
+{% else %}<p class="empty">لا توجد ملفات مرفقة بعد.</p>{% endfor %}{% endblock %}

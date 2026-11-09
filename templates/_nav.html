@@ -1,0 +1,7 @@
+<nav class="bottom-nav">
+  <a href="/" class="nav-item {{ 'active' if request.path == '/' }}"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a>
+  <a href="/units/lesson" class="nav-item {{ 'active' if '/lesson' in request.path }}"><i class="fa-solid fa-book-open"></i><span>الدروس</span></a>
+  <a href="/units/exercise" class="nav-item {{ 'active' if '/exercise' in request.path }}"><i class="fa-solid fa-pen-to-square"></i><span>التمارين</span></a>
+  <a href="/chat" class="nav-item {{ 'active' if request.path.startswith('/chat') }}"><i class="fa-regular fa-comments"></i><span>الأستاذ</span></a>
+  <a href="/logout" class="nav-item"><i class="fa-solid fa-right-from-bracket"></i><span>خروج</span></a>
+</nav>

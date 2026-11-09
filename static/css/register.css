@@ -1,0 +1,400 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  background-color: #240c66;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  background-color: #240c66;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.register-header {
+  position: relative;
+  padding: 25px 20px 35px 20px;
+  background-color: #240c66;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.math-watermark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.bg-shape {
+  position: absolute;
+  top: -40px;
+  left: -50px;
+  width: 220px;
+  height: 380px;
+  background: linear-gradient(135deg, #a672fb 0%, #8344f6 100%);
+  transform: rotate(-18deg);
+  border-radius: 40px;
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  z-index: 3;
+}
+
+.teacher-info {
+  flex: 1.2;
+}
+
+.app-logo {
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7033ff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.title-sub { font-size: 14px; color: #e2d5ff; }
+.title-main { font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+.badge-year { display: inline-block; background-color: #8c50ff; font-size: 11px; padding: 3px 14px; border-radius: 10px; font-weight: 800; }
+
+.teacher-image img { max-width: 110%; max-height: 190px; object-fit: contain; }
+
+/* Register Card */
+.register-card {
+  background-color: #ffffff;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  padding: 30px 25px;
+  flex: 1;
+  margin-top: -15px;
+  position: relative;
+  z-index: 10;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: #6a2bf4;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background-color: #faf9fe;
+  border: 1px solid #f0eaff;
+  border-radius: 16px;
+  padding: 0 15px;
+  height: 52px;
+}
+
+.input-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #f2ebff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7033ff;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.input-group input, .input-group select {
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Radio Box */
+.question-box {
+  background-color: #f8f6ff;
+  padding: 12px 15px;
+  border-radius: 16px;
+}
+
+.question-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+}
+
+.radio-options {
+  display: flex;
+  gap: 12px;
+}
+
+.radio-card { flex: 1; cursor: pointer; }
+.radio-card input { display: none; }
+
+.radio-btn {
+  display: block;
+  text-align: center;
+  padding: 8px;
+  background-color: #ffffff;
+  border: 1px solid #dcd0ff;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 13px;
+  color: #6a2bf4;
+  transition: all 0.2s;
+}
+
+.radio-card input:checked + .radio-btn {
+  background-color: #7033ff;
+  color: #ffffff;
+  border-color: #7033ff;
+}
+
+/* Elements Hidden initially */
+.conditional-field {
+  display: none;
+}
+
+/* Warning Alert Box */
+.warning-alert {
+  background-color: #fff1f0;
+  border: 1px solid #ffa39e;
+  border-radius: 14px;
+  padding: 12px 15px;
+  color: #e81123;
+  font-size: 12px;
+  font-weight: 800;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.warning-alert i { font-size: 18px; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Submit Button */
+.submit-btn {
+  background: linear-gradient(135deg, #7033ff 0%, #5b1bf4 100%);
+  color: #ffffff;
+  border: none;
+  height: 52px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #777;
+}
+
+.login-link a { color: #7033ff; text-decoration: none; font-weight: 800; }
+
+/* تنسيق حقول الاختيار Select */
+.input-group select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: #333333;
+  cursor: pointer;
+  appearance: none; /* إخفاء سهم المتصفح الافتراضي */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* إضافة سهم مخصص للقوائم */
+.input-group {
+  position: relative;
+}
+
+.input-group:has(select)::after {
+  content: '\f107'; /* أيقونة السهم لأسفل من FontAwesome */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 15px;
+  color: #7033ff;
+  pointer-events: none;
+}
+
+
+/* ==========================================
+   🎯 النافذة المنبثقة (Save Info Modal)
+   ========================================== */
+.save-info-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.save-info-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: #f7f8fc;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 25px;
+  padding: 30px 20px 25px 20px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: scaleUp 0.3s ease;
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #777777;
+  cursor: pointer;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #222222;
+  margin-bottom: 20px;
+}
+
+/* بطاقة لعرض المعلومات */
+.info-card {
+  background-color: #e9eff8;
+  border-radius: 16px;
+  padding: 15px 18px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.info-label {
+  color: #707789;
+  font-weight: 700;
+}
+
+.info-value {
+  color: #222222;
+  font-weight: 800;
+}
+
+.info-value.highlight {
+  color: #0d42ff;
+  letter-spacing: 1px;
+}
+
+.modal-instruction {
+  font-size: 12px;
+  color: #888888;
+  line-height: 1.6;
+  font-weight: 600;
+  margin-bottom: 22px;
+  padding: 0 10px;
+}
+
+/* زر تلغرام الأزرق الشبيه بالصورة */
+.telegram-action-btn {
+  width: 100%;
+  background-color: #0066ff; /* لون أزرق مميز مطابق للصور */
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+  transition: transform 0.2s;
+}
+
+.telegram-action-btn:hover {
+  transform: translateY(-2px);
+  background-color: #0052cc;
+}

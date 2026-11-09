@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block t %}الأستاذ بلعقاب أسامة{% endblock %}</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/web.css"></head>
+<body class="admin"><main class="page wide">
+<h1>👑 لوحة الأستاذ بلعقاب أسامة</h1>
+{% for m in msgs %}<div class="form-error">{{ m }}</div>{% endfor %}
+{% if not authed %}
+<form method="post" class="box"><input type="password" name="password" placeholder="كلمة مرور الأدمين" required><button class="btn">دخول</button></form>
+{% else %}
+<p><a href="/admin/logout">تسجيل الخروج</a></p>
+<h2>⏳ بانتظار التفعيل ({{ pending|length }})</h2>
+<div class="scroll"><table>{% for id, f, l, ph, sc, br, code, at in pending %}<tr><td>{{ f }} {{ l }}</td><td dir="ltr">{{ ph }}</td><td>{{ sc }}<br>{{ br }}</td><td dir="ltr"><b>{{ code }}</b></td><td>{{ at }}</td>
+<td><form method="post" action="/admin/activate/{{ id }}"><button class="btn">تفعيل</button></form>
+<form method="post" action="/admin/delete/{{ id }}" onsubmit="return confirm('حذف؟')"><button class="btn red">حذف</button></form></td></tr>
+{% else %}<tr><td>لا يوجد.</td></tr>{% endfor %}</table></div>
+<h2>💬 الرسائل</h2>
+{% for id, name, unread in convs %}<a class="lesson-card" href="/admin/chat/{{ id }}"><span>{{ name }}</span>{% if unread %}<span class="badge2">{{ unread }}</span>{% endif %}</a>
+{% else %}<p class="empty">لا توجد رسائل.</p>{% endfor %}
+<h2>✅ التلاميذ المفعّلون ({{ active|length }})</h2>
+<div class="scroll"><table>{% for id, f, l, ph, sc, br in active %}<tr><td>{{ f }} {{ l }}</td><td dir="ltr">{{ ph }}</td><td>{{ sc }}</td><td>{{ br }}</td>
+<td><form method="post" action="/admin/reset/{{ id }}"><button class="btn">كلمة مرور جديدة</button></form>
+<form method="post" action="/admin/delete/{{ id }}" onsubmit="return confirm('حذف؟')"><button class="btn red">حذف</button></form></td></tr>{% endfor %}</table></div>
+{% endif %}</main></body></html>
